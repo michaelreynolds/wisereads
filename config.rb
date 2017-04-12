@@ -40,7 +40,26 @@ page '/*.txt', layout: false
 # Build-specific configuration
 # https://middlemanapp.com/advanced/configuration/#environment-specific-settings
 
-# configure :build do
-#   activate :minify_css
-#   activate :minify_javascript
-# end
+configure :build do
+  activate :minify_css
+  activate :minify_javascript
+end
+
+# Reload the browser automatically whenever files change
+configure :development do
+  activate :livereload
+end
+
+
+
+
+# https://github.com/sosedoff/goodreads
+# require 'goodreads'
+#KEY = "p5qrzhENwZGbhMZ5izXULA"
+#SECRET = "3SQk5lr33MJsI9HDwfYx9eTBe0xXgQQdlpEOOw7wP2A"
+
+#client = Goodreads::Client.new(api_key: "KEY", api_secret: "SECRET")
+#client = Goodreads.new(api_key: "p5qrzhENwZGbhMZ5izXULA") # short version
+
+
+#Goodreads.configuration => { api_key: "p5qrzhENwZGbhMZ5izXULA"}
