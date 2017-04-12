@@ -62,14 +62,14 @@ activate :deploy do |deploy|
   deploy.commit_message = 'middleman auto deploy'      # commit message (can be empty), default: Automated commit at `timestamp` by middleman-deploy `version`
 end
 
+configure Goodreads
 
-# https://github.com/sosedoff/goodreads
-# require 'goodreads'
-#KEY = "p5qrzhENwZGbhMZ5izXULA"
-#SECRET = "3SQk5lr33MJsI9HDwfYx9eTBe0xXgQQdlpEOOw7wP2A"
+  # https://github.com/sosedoff/goodreads
+  # require 'goodreads'
+  #KEY = "p5qrzhENwZGbhMZ5izXULA"
+  #SECRET = "3SQk5lr33MJsI9HDwfYx9eTBe0xXgQQdlpEOOw7wP2A"
 
-#client = Goodreads::Client.new(api_key: "KEY", api_secret: "SECRET")
-client = Goodreads.new(api_key: "p5qrzhENwZGbhMZ5izXULA") # short version
-
-
-#Goodreads.configuration => { api_key: "p5qrzhENwZGbhMZ5izXULA"}
+  client = Goodreads.new(api_key: "p5qrzhENwZGbhMZ5izXULA") # short version
+  #client = Goodreads::Client.new(api_key: "KEY", api_secret: "SECRET")
+  #Goodreads.configuration => { api_key: "p5qrzhENwZGbhMZ5izXULA"}
+end
