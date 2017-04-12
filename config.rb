@@ -69,7 +69,7 @@ end
 #SECRET = "3SQk5lr33MJsI9HDwfYx9eTBe0xXgQQdlpEOOw7wP2A"
 
 #client = Goodreads::Client.new(api_key: "KEY", api_secret: "SECRET")
-#client = Goodreads.new(api_key: "p5qrzhENwZGbhMZ5izXULA") # short version
+client = Goodreads.new(api_key: "p5qrzhENwZGbhMZ5izXULA") # short version
 
 
 #Goodreads.configuration => { api_key: "p5qrzhENwZGbhMZ5izXULA"}

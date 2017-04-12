@@ -1,11 +1,14 @@
 
-<%= link_to("Review Counts", "https://www.goodreads.com/book/review_counts.json?isbns=0441172717%2C0141439602&key=p5qrzhENwZGbhMZ5izXULA", target: "_blank" ) %>
+<%= link_to("Review Counts", "https://www.goodreads.com/book/review_counts.json?isbns=0441172717&key=p5qrzhENwZGbhMZ5izXULA", target: "_blank" ) %>
 
 <ul>
   <% 5.times do |num| %>
     <li>Count <%= num %></li>
   <% end %>
 </ul>
+
+<input name="amount" type="text" value="<%= "#{isbn}.00" %>" >
+<input type="text" value="<%= other %>" >
 
 
 <div class="row booksection">
