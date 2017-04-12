@@ -1,6 +1,5 @@
 # Activate and configure extensions
 # https://middlemanapp.com/advanced/configuration/#configuring-extensions
-
 activate :autoprefixer do |prefix|
   prefix.browsers = "last 2 versions"
 end
@@ -31,11 +30,6 @@ page '/*.txt', layout: false
 # Methods defined in the helpers block are available in templates
 # https://middlemanapp.com/basics/helper-methods/
 
-# helpers do
-#   def some_helper
-#     'Helping'
-#   end
-# end
 
 # Build-specific configuration
 # https://middlemanapp.com/advanced/configuration/#environment-specific-settings
@@ -43,6 +37,7 @@ page '/*.txt', layout: false
 configure :build do
   activate :minify_css
   activate :minify_javascript
+
 end
 
 # Reload the browser automatically whenever files change
@@ -69,7 +64,7 @@ end
 #SECRET = "3SQk5lr33MJsI9HDwfYx9eTBe0xXgQQdlpEOOw7wP2A"
 
 #client = Goodreads::Client.new(api_key: "KEY", api_secret: "SECRET")
-client = Goodreads.new(api_key: "p5qrzhENwZGbhMZ5izXULA") # short version
+# short version
 
 
 #Goodreads.configuration => { api_key: "p5qrzhENwZGbhMZ5izXULA"}
