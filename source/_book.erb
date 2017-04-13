@@ -6,7 +6,7 @@
 
 <ul>
   <% isbn.each do |i| %>
-    <% book = @client.book_by_isbn(i.isbn) %>
+    <% book = @client.book_by_isbn(i) %>
     <li><h1>title: <%=book.title%></h1></li>
     <li>ISBN: <%=book.isbn%></li>
     <li>publication_year: <%=book.publication_year%></li>
