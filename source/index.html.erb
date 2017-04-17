@@ -2,10 +2,9 @@
 title: Welcome to Middleman
 ---
 
-<%= partial(:book, :locals => { :isbn => [9780310348450, 9780310520757, 9780802405647], :note => "other info from a custom field" }) %>
-
-<%#= partial(:book, :locals => { :books => [
-  [:isbn => 9780310348450, :note => "other info from a custom field", :link => "link" ],
-  [:isbn => 9780310520757, :note => "other info from a custom field", :link => "link" ],
-  [:isbn => 9780802405647, :note => "other info from a custom field", :link => "link" ]]
+<%= partial(:bookshelf, :locals => { :books => [
+  {:isbn => 9780310348450, :note => "other info from a custom field", :link => "link" },
+  {:isbn => 9780310520757, :note => "other info from a custom field", :link => "link" },
+  {:isbn => 9780802405647, :note => "other info from a custom field", :link => "link" }
+]
   }) %>

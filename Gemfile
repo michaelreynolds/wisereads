@@ -8,6 +8,7 @@ gem 'middleman-livereload'
 gem 'middleman-deploy', github: 'nulltask/middleman-deploy'
 gem 'middleman-compass', '>= 4.0.0'
 
+gem 'byebug'
 gem 'goodreads'
 gem 'rest-client'
 gem 'xml-simple', '~> 1.1', '>= 1.1.5'
