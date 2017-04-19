@@ -1,34 +1,64 @@
 <%
   require 'goodreads'
   @client = Goodreads::Client.new(api_key: "p5qrzhENwZGbhMZ5izXULA")
+  books.each do |passed|
+    book = @client.book_by_isbn(passed[:isbn10])
 %>
+  <section class="book">
+    <div class="side">
+      <!-- fix later with a better counter -->
+      <div class="circle number"><span><%= passed[:counter] %></span></div>
 
-<ul>
-  <%books.each do |passed|%>
-    <% book = @client.book_by_isbn(passed[:isbn]) %>
-    <li><h1>title: <%=book.title%></h1></li>
-    <li>ISBN: <%=book.isbn%></li>
-    <li>publication_year: <%=book.publication_year%></li>
-    <li>ratings_count: <%=book.ratings_count%></li>
-    <li>reviews count: <%=book.work.reviews_count%></li>
-    <li>average_rating:  <%=book.average_rating%></li>
-    <li>GoodReads Link : <%= link_to("View on GoodReads ", book.link, target: "_blank" ) %></li>
-    <li>num_pages: <%=book.num_pages%></li>
-    <li>author name: <%= book.authors.author.class %></li>
-    <li>author name: <%author = book.authors.author %></li>
-    <% author.methods%>
-    <% author.name %>
-    <li>author average_rating: <%#=book.authors.author.first.average_rating%></li>
-    <li>image_url: <%=book.image_url%></li>
-    <li>publisher: <%=book.publisher%></li>
-    <li>description: <%=book.description%></li>
-    <li>Custom Note: <%= passed[:note] %></li>
-    <li>Link: <%= passed[:link] %></li>
-    <hr>
-  <% end %>
-</ul>
+      <!-- <div style="position: relative;" class="bgcoverbody"></div> -->
+      <a href="<%= passed[:link]%>" target="_blank"><%=image_tag('http://images.amazon.com/images/P/' + passed[:isbn10] + '.01.LZZZZZZZ.jpg', class: "book_cover")%></a>
+      <%= link_to("View on Amazon ", passed[:link], target: "_blank", class: "btn outbound", title: "View and Get on Amazon" ) %>
+      <span class="disclaimer">using this link helps keep this site online</span>
+    </div>
+    <div class="main">
+      <h2><%=book.title%></h2>
+      <div class="inline">
+        <h5 class="author">by <%= passed[:author] %></h5>
+        <span class="rating"><%=book.average_rating%> out of 5.0 Hoots </span><a href="" class="drop-target"><%=image_tag("images/info.svg", class: "info")%></a>
+        <!-- <div class="hide">
+          <p>Published by <%=book.publisher%> in <%book.publication_year%></p>
+          <p><%=book.num_pages%> Pages, <%=book.format%></p>
+          <p>ISBN: <%=book.isbn%></p>
+          <p>GoodReads Link : <%= link_to("View on GoodReads ", book.link, target: "_blank" ) %></p>
+        </div> -->
+      </div>
+      <p class="book_description"><%=truncate_words(strip_tags(book.description), length: 800, separator: "<br>")%> <a href="" class="readmore"> Read More</a></p>
 
 
+
+    </div>
+    <!-- ratings_count: <%=book.ratings_count%>
+    reviews count: <%=book.work.reviews_count%>
+    Custom Note: <%= passed[:note] %> -->
+  </section>
+<% end %>
+
+
+
+<div>
+  <input type="checkbox" class="read-more-state" id="post-1" />
+
+  <p class="read-more-wrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit. <span class="read-more-target">Libero fuga facilis vel consectetur quos sapiente deleniti eveniet dolores tempore eos deserunt officia quis ab? Excepturi vero tempore minus beatae voluptatem!</span></p>
+
+  <label for="post-1" class="read-more-trigger"></label>
+</div>
+
+<div>
+  <input type="checkbox" class="read-more-state" id="post-2" />
+
+  <ul class="read-more-wrap">
+    <li>lorem</li>
+    <li>lorem 2</li>
+    <li class="read-more-target">lorem 3</li>
+    <li class="read-more-target">lorem 4</li>
+  </ul>
+
+  <label for="post-2" class="read-more-trigger"></label>
+</div>
 
 
 

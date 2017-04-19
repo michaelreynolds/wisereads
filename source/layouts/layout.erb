@@ -3,9 +3,23 @@
 <head>
   <meta charset="utf-8">
   <title><%= current_page.data.title || "Wise Reads" %></title>
-  <%= stylesheet_link_tag "site" %>
-  <%= javascript_include_tag "site" %>
+  <%= favicon_tag 'images/favicon.png' %>
+  <%= stylesheet_link_tag "style" %>
+  <%= javascript_include_tag "script" %>
+  <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.2/js/drop.min.js" %>
+  <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.2/css/drop-theme-hubspot-popovers.min.css" %>
+  <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.2/css/drop-theme-arrows-bounce.css" %>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 </head>
 <body>
+  <header>
+    <h1><a href="/"><%= image_tag("images/wisereads.svg", alt: "Wise Reads Co. Logo | becoming a better you", class: "logo") %></a></h1>
+    <div class="divider">
+      <p>A curated list of incredibly helpful books that will help you become a better person.</p>
+    </div>
+  </header>
   <%= yield %>
+  <footer>
+    <p>Have a book you’d like to recomend? <%= mail_to("wisereads.co@gmail.com", "Let us know!") %></p>
+  </footer>
 </body>
