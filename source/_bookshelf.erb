@@ -2,15 +2,12 @@
   require 'goodreads'
   @client = Goodreads::Client.new(api_key: "p5qrzhENwZGbhMZ5izXULA")
   books.each do |passed|
-    book = @client.book_by_isbn(passed[:isbn10])
+    book = @client.book_by_isbn(passed[:isbn])
 %>
   <section class="book">
     <div class="side">
-      <!-- fix later with a better counter -->
       <div class="circle number"><span><%= passed[:counter] %></span></div>
-
-      <!-- <div style="position: relative;" class="bgcoverbody"></div> -->
-      <a href="<%= passed[:link]%>" target="_blank"><%=image_tag('http://images.amazon.com/images/P/' + passed[:isbn10] + '.01.LZZZZZZZ.jpg', class: "book_cover")%></a>
+      <a href="<%= passed[:link]%>" target="_blank"><%=image_tag('http://images.amazon.com/images/P/' + passed[:isbn] + '.01.LZZZZZZZ.jpg', class: "book_cover")%></a>
       <%= link_to("View on Amazon ", passed[:link], target: "_blank", class: "btn outbound", title: "View and Get on Amazon" ) %>
       <span class="disclaimer">using this link helps keep this site online</span>
     </div>
@@ -18,62 +15,13 @@
       <h2><%=book.title%></h2>
       <div class="inline">
         <h5 class="author">by <%= passed[:author] %></h5>
-        <span class="rating"><%=book.average_rating%> out of 5.0 Hoots </span><a href="" class="drop-target"><%=image_tag("images/info.svg", class: "info")%></a>
-        <!-- <div class="hide">
-          <p>Published by <%=book.publisher%> in <%book.publication_year%></p>
-          <p><%=book.num_pages%> Pages, <%=book.format%></p>
-          <p>ISBN: <%=book.isbn%></p>
-          <p>GoodReads Link : <%= link_to("View on GoodReads ", book.link, target: "_blank" ) %></p>
-        </div> -->
+        <span class="rating"><%=book.average_rating%><!-- out of 5.0 --> Hoots </span><a href="<%=book.link%>" target="_blank" title="View book in GoodReads" class="drop-target"><%=image_tag("images/info.svg", class: "info")%></a>
       </div>
-      <p class="book_description"><%=truncate_words(strip_tags(book.description), length: 800, separator: "<br>")%> <a href="" class="readmore"> Read More</a></p>
-
-
-
+      <p class="description"><%=strip_tags(book.description)%></p>
+      <!-- <p class="description"><%#=truncate_words(strip_tags(book.description), length: 800, separator: "<br>")%></p> -->
+      <p><a href="<%=book.link%>" target="_blank" class="readnow"> Read It Now! </a></p>
+      <!-- <p><a class="readmore"> Read More</a></p> -->
     </div>
-    <!-- ratings_count: <%=book.ratings_count%>
-    reviews count: <%=book.work.reviews_count%>
-    Custom Note: <%= passed[:note] %> -->
+
   </section>
 <% end %>
-
-
-
-<div>
-  <input type="checkbox" class="read-more-state" id="post-1" />
-
-  <p class="read-more-wrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit. <span class="read-more-target">Libero fuga facilis vel consectetur quos sapiente deleniti eveniet dolores tempore eos deserunt officia quis ab? Excepturi vero tempore minus beatae voluptatem!</span></p>
-
-  <label for="post-1" class="read-more-trigger"></label>
-</div>
-
-<div>
-  <input type="checkbox" class="read-more-state" id="post-2" />
-
-  <ul class="read-more-wrap">
-    <li>lorem</li>
-    <li>lorem 2</li>
-    <li class="read-more-target">lorem 3</li>
-    <li class="read-more-target">lorem 4</li>
-  </ul>
-
-  <label for="post-2" class="read-more-trigger"></label>
-</div>
-
-
-
-<!-- <div class="row booksection">
-  <div class="two columns">
-    <div style="position: relative;" class="bgcoverbody">
-      <a href="https://www.amazon.com/Concerning-Spiritual-Art-Wassily-Kandinsky/dp/0486234118/ref=as_li_ss_tl?s=books&ie=UTF8&qid=1490552646&sr=1-1&keywords=concerning+the+spiritual+in+art&linkCode=ll1&tag=jotami-2"><img alt="Concerning the Spiritual in Art"  src="http://bananabooks.co/html/images/covers/0486234118.jpg"></a>
-    </div>
-    <a href="https://www.amazon.com/Concerning-Spiritual-Art-Wassily-Kandinsky/dp/0486234118/ref=as_li_ss_tl?s=books&ie=UTF8&qid=1490552646&sr=1-1&keywords=concerning+the+spiritual+in+art&linkCode=ll1&tag=jotami-2" class="buttoncustom">View in amazon</a>
-  </div>
-    <div class="ten columns">
-      <h3 class="booktitle"><a href="https://www.amazon.com/Concerning-Spiritual-Art-Wassily-Kandinsky/dp/0486234118/ref=as_li_ss_tl?s=books&ie=UTF8&qid=1490552646&sr=1-1&keywords=concerning+the+spiritual+in+art&linkCode=ll1&tag=jotami-2">Concerning the Spiritual in Art</a></h3>
-      <div class="score tooltip"><span class="tooltiptext"><strong>What this score means?</strong><li/>This score reflect the popularity of this book. Right now we are extracting this data from goodreads.</span><img alt="Bananometer"  width="22" style="vertical-align: middle;" src="http://bananabooks.co/html/images/logo.png"><span class="bananometer">4.6k</span></div>
-      <p class="bookauthor">Wassily Kandinsky</p>
-      <p class="bookdesc">A pioneering work in the movement to free art from its traditional bonds to material reality, this book is one of the most important documents in the history of modern art. Written by the famous nonobjective painter Wassily Kandinsky (1866–1944), it explains Kandinsky's own theory of painting and crystallizes the ideas that were influencing many other modern artists of the period. Along with his own groundlieaking paintings, this book had a tremendous impact on the development of modern art.<li />Kandinsky's ideas are presented in two parts. The first part, called "About General Aesthetic," issues a call for a spiritual revolution in painting that will let artists express their own inner lives in abstract, non-material terms. Just as musicians do not depend upon the material world for their music, so artists should not have to depend upon the material world for their art. In the second part, "About Painting," Kandinsky discusses the psychology of colors, the language of form and color, and the responsibilities of the artist. An Introduction by the translator, Michael T. H. Sadler, offers additional explanation of Kandinsky's art and theories, while a new Preface by Richard Stratton discusses Kandinsky's career as a whole and the impact of the book. Making the book even more valuable are nine woodcuts by Kandinsky himself that appear at the chapter headings.<li />This English translation of Über das Geistige in der Kunst was a significant contribution to the understanding of nonobjectivism in art. It continues to be a stimulating and necessary reading experience for every artist, art student, and art patron concerned with the direction of 20th-century painting.</p>
-      <span class="tagbook"><a class="tagbig" href="http://bananabooks.co/tag/Art">Art</a></span>
-    </div>
-</div> -->
