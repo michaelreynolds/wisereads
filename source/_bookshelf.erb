@@ -7,21 +7,23 @@
   <section class="book">
     <div class="side">
       <div class="circle number"><span><%= passed[:counter] %></span></div>
-      <a href="<%= passed[:link]%>" target="_blank"><%=image_tag('http://images.amazon.com/images/P/' + passed[:isbn] + '.01.LZZZZZZZ.jpg', class: "book_cover")%></a>
+      <a href="<%= passed[:link]%>" target="_blank"><%=image_tag('http://images.amazon.com/images/P/' + passed[:isbn] + '.01.LZZZZZZZ.jpg', class: "book_cover", alt: book.title)%></a>
       <%= link_to("View on Amazon ", passed[:link], target: "_blank", class: "btn outbound", title: "View and Get on Amazon" ) %>
       <span class="disclaimer">using this link helps keep this site online</span>
     </div>
     <div class="main">
-      <h2><%=book.title%></h2>
+      <h3><a href="<%=passed[:link]%>" target="_blank" class="booktitle"><%=book.title%></a></h3>
       <div class="inline">
-        <h5 class="author">by <%= passed[:author] %></h5>
+        <h3 class="bookauthor">by <%= passed[:author] %></h3>
         <span class="rating"><%=book.average_rating%><!-- out of 5.0 --> Hoots </span><a href="<%=book.link%>" target="_blank" title="View book in GoodReads" class="drop-target"><%=image_tag("images/info.svg", class: "info")%></a>
       </div>
-      <p class="description"><%=strip_tags(book.description)%></p>
-      <!-- <p class="description"><%#=truncate_words(strip_tags(book.description), length: 800, separator: "<br>")%></p> -->
+      <div class="description">
+        <p><%=strip_tags(book.description)%></p>
+        <p><%#=book.description.gsub(/<br \/><br \/><br \/><br \/>|<br\ \/><br\ \/><br\ \/>|<br \/><br \/>|<br \/> <br \/>|<br \/>|<br><br>|<br>/, '</p><p>') %></p>
+        <!-- <p><%#=truncate_words(strip_tags(book.description), length: 800, separator: "<br>")%></p> -->
+      </div>
       <p><a href="<%=passed[:link]%>" target="_blank" class="readnow"> Read It Now! </a></p>
       <!-- <p><a class="readmore"> Read More</a></p> -->
     </div>
-
   </section>
 <% end %>

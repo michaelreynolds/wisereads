@@ -1,5 +1,7 @@
+@charset "utf-8"
 @import normalize.css.scss
-// @import skeleton.css.scss
+@import responsivity.css.scss
+// @import _media-queries-debug.css.sass
 
 
 //////////////////////////////////////////
@@ -33,36 +35,69 @@ a
   text-decoration: underline
   &:focus, &:hover, &:visited
     color: inherit
-h2, h3, h4, h5
+h1, h2, h3, h4, h5, h6
   margin-top: 0
   margin-bottom: 1rem
+  line-height: 1.15
   font-weight: 700
+  & a
+    text-decoration: none
+h1
+  font-size: 3rem
+  //48px
+h2
+  font-size: 2rem
+  //32px
+h3
+  font-size: 1.5rem
+  //24px
+h4
+  font-size: 1.125rem
+  //18px
+h5
+  font-size: 1rem
+  //16px
+h6
+  font-size: 0.875rem
+  //14px
 p
+  font-size: 0.875rem
   margin: 0.75rem 0
+  font-weight: 400
 span
   font-weight: 400
-
+img
+  max-width: 100%
+  height: auto
+  display: block
 //////////////////////////////////////////
 //////////////////////////////////////////
 //////////////////////////////////////////
 header
-  text-align: center
-  margin: 3rem 0
+  text-align: left
+  margin: 2rem 0
   .logo
     max-width: 25rem
     margin: 0 auto
-    width: 25rem
-    display: inline-block
+    padding: 1.5rem
+  h6
+    padding: 3rem 2rem
 .divider
-  width: 100%
-  padding: 1.5rem 0.5rem
-  margin: 0
+  margin: 0 auto
   background-color: $maroon
   color: $offwhite
-  font-size: 0.75rem
+  font-size: 0.85rem
+  h6
+    text-align: center
+    max-width: 60rem
+    margin: 0 auto
+  .subdued
+    color: #cc8ca8
+
 //////////////////////////////////////////
 //////////////////////////////////////////
 //////////////////////////////////////////
+
 section
   max-width: 60rem
   margin: 0 auto
@@ -70,15 +105,26 @@ section
   padding-bottom: 3rem
   margin-bottom: 3rem
   border-bottom: 1px solid $lightgrey
+  +respond(all-mobile)
+    float: none
+    clear: both
+    display: block
   &::after
     clear: both
     content: ""
+  &:first-of-type
+    margin-top: 4rem
   &:last-of-type
     border-bottom: none
   .side
     margin-right: 2rem
     max-width: 11rem
     float: left
+    +respond(all-mobile)
+      float: none
+      clear: both
+      margin: 0 auto
+
   .circle.number
     border: 0.1875rem solid $grey
     border-radius: 50%
@@ -91,12 +137,12 @@ section
     span
       font-size: 1.25rem
       font-weight: 700
+      position: relative
       margin-top: 0.4375rem
       display: inline-block
   .book_cover
     max-width: 10.75rem
     border-radius: 0.125rem
-    display: block
     margin-bottom: 1.25rem
   .btn.outbound
     background-color: $orange
@@ -113,20 +159,34 @@ section
     padding-top: 0.75rem
     color: $lightgrey
     display: block
+
   .main
-    float: inline-block
     padding-right: 2rem
+    +respond(all-mobile)
+      margin: 0 auto
+      padding: 2rem
   .inline > *
     display: inline
-  .author
+    +respond(all-phones)
+      display: inline-block
+  .bookauthor
     font-size: 1.125rem
     font-weight: 600
   .rating
     padding-left: 0.45rem
+    +respond(all-phones)
+      display: inline-block
+  img.info
+    width: 1rem
+    padding-left: 0.25rem
+    display: inline-block
+    +respond(all-phones)
+      display: block
   .description
     font-weight: 400
     font-size: 0.8125rem
     line-height: normal
+    padding-top: 1rem
   .readmore, .readnow
     text-decoration: none
     font-weight: 600
@@ -137,29 +197,26 @@ section
     height: 0.375rem
     display: inline-block
     padding-left: 0.1875rem
-  .info
-    width: 0.75rem
-    padding-left: 0.25rem
 
 
 //////////////////////////////////////////
 //////////////////////////////////////////
 //////////////////////////////////////////
 footer
-  width: 100%
   display: block
   text-align: center
   background-color: $maroon
-  margin-top: 3rem
   color: $offwhite
   padding: 1.5rem 0.5rem
-.contact
-  text-align: center
-  display: inline-block
-  font-size: 0.75rem
-  margin: 0 auto
-  padding: 1rem 0
-  padding-top: 4rem
-.subdued
-  color: #985b75
-  font-size: 0.75rem
+  h6
+    text-align: center
+    font-size: 0.75rem
+    margin: 0 auto
+    padding: 0.5rem 0
+    a
+      text-decoration: underline
+  & :first-child
+    margin-top: 4rem
+  & :last-child
+    margin-bottom: 1rem
+    padding: 0
