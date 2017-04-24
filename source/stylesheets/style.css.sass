@@ -37,26 +37,30 @@ a
     color: inherit
 h1, h2, h3, h4, h5, h6
   margin-top: 0
-  margin-bottom: 1rem
+  margin-bottom: 0.5rem
   line-height: 1.15
   font-weight: 700
   & a
     text-decoration: none
 h1
-  font-size: 3rem
   //48px
+  font-size: 3rem
 h2
   font-size: 2rem
   //32px
 h3
   font-size: 1.5rem
   //24px
+  +respond(all-phones)
+    font-size: 1.125rem
 h4
   font-size: 1.125rem
   //18px
 h5
   font-size: 1rem
   //16px
+  +respond(all-phones)
+    font-size: 0.875rem
 h6
   font-size: 0.875rem
   //14px
@@ -76,6 +80,15 @@ img
 header
   text-align: left
   margin: 2rem 0
+
+  // background-image: url(/images/header_ring.svg), linear-gradient( 120deg, rgb(196,76,71) 0%, rgb(196,76,71) 10%, rgb(52,11,65) 80%, rgb(52,11,65) 100%)
+  // background-position: calc(50% - 5px) calc(50% - 25px), center
+  // background-repeat: no-repeat
+  // height: 435px
+  // min-width: 1379px
+  // overflow: hidden
+  // width: 100%
+
   .logo
     max-width: 25rem
     margin: 0 auto
@@ -166,28 +179,38 @@ section
     +respond(all-mobile)
       margin: 0 auto
       padding: 2rem
-  .inline > *
+  .inline
     display: inline
+    padding-bottom: 0
+    margin-bottom: 0
+    & > *
+      display: inline
     +respond(all-phones)
       display: inline-block
   .bookauthor
+    padding-right: 0.45rem
     font-size: 1.125rem
     font-weight: 600
+    +respond(all-phones)
+      font-size: 0.975rem
+      line-height: 1.5rem
   .rating
-    padding-left: 0.45rem
+    position: relative
     +respond(all-phones)
       display: inline-block
   img.info
-    width: 1rem
-    padding-left: 0.25rem
+    width: 0.875rem
+    padding-left: 0.4rem
     display: inline-block
+    position: absolute
+    margin-top: 0.25rem
     +respond(all-phones)
-      display: block
+      margin-top: 0.325rem
   .description
     font-weight: 400
     font-size: 0.8125rem
     line-height: normal
-    padding-top: 1rem
+    padding-top: 0.25rem
   .readmore, .readnow
     text-decoration: none
     font-weight: 600

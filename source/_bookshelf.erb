@@ -15,7 +15,7 @@
       <h3><a href="<%=passed[:link]%>" target="_blank" class="booktitle"><%=book.title%></a></h3>
       <div class="inline">
         <h3 class="bookauthor">by <%= passed[:author] %></h3>
-        <span class="rating"><%=book.average_rating%><!-- out of 5.0 --> Hoots </span><a href="<%=book.link%>" target="_blank" title="View book in GoodReads" class="drop-target"><%=image_tag("images/info.svg", class: "info")%></a>
+        <h5><span class="rating"><%=book.average_rating%><!-- out of 5.0 --> Hoots </span><a href="<%=book.link%>" target="_blank" title="View book in GoodReads" class="drop-target"><%=image_tag("images/info.svg", class: "info")%></a></h5>
       </div>
       <div class="description">
         <p><%=strip_tags(book.description)%></p>
@@ -24,6 +24,23 @@
       </div>
       <p><a href="<%=passed[:link]%>" target="_blank" class="readnow"> Read It Now! </a></p>
       <!-- <p><a class="readmore"> Read More</a></p> -->
+
+      <!-- <div class="">
+        <p>Published by <%=book.publisher%> in <%book.publication_year.to_s%></p>
+        <p><%=book.num_pages%> Pages, <%=book.format%></p>
+        <p>ISBN: <%=book.isbn%></p>
+        <p>GoodReads Link : <%= link_to("View on GoodReads ", book.link, target: "_blank" ) %></p>
+      </div>
+      multiplied <%=book.ratings_count.to_i * book.average_rating.to_i%>
+      average book rating: <%=book.average_rating.to_i%>
+      ratings_count: <%=book.ratings_count%>
+      reviews count: <%=book.work.reviews_count%>
+      Custom Note: <%= passed[:note] %> -->
+
     </div>
   </section>
+
+
+
+
 <% end %>
