@@ -25,6 +25,24 @@
   <% end %>
 </ul>
 
+
+<div class="">
+  <!-- <p><a class="readmore"> Read More</a></p> -->
+  <p><%#=book.description.gsub(/<br \/><br \/><br \/><br \/>|<br\ \/><br\ \/><br\ \/>|<br \/><br \/>|<br \/> <br \/>|<br \/>|<br><br>|<br>/, '</p><p>') %></p>
+  <!-- <p><%#=truncate_words(strip_tags(book.description), length: 800, separator: "<br>")%></p> -->
+  <p>Published by <%#=book.publisher%> in <%#book.publication_year.to_s%></p>
+  <p><%#=book.num_pages%> Pages, <%#=book.format%></p>
+  <p>ISBN: <%#=book.isbn%></p>
+  <p>GoodReads Link : <%#= link_to("View on GoodReads ", book.link, target: "_blank" ) %></p>
+</div>
+multiplied <%#=book.ratings_count.to_i * book.average_rating.to_i%>
+average book rating: <%#=book.average_rating.to_i%>
+ratings_count: <%#=book.ratings_count%>
+reviews count: <%#=book.work.reviews_count%>
+Custom Note: <%#= passed[:note] %>
+
+
+
 https://www.goodreads.com/book/isbn/0441172717?format=JSON?key=p5qrzhENwZGbhMZ5izXULA
 
 <%#= partial(:book, :locals => { :isbn => [9780310348450, 9780310520757, 9780802405647], :note => "other info from a custom field" }) %>

@@ -6,7 +6,7 @@
 %>
   <section class="book">
     <div class="side">
-      <div class="circle number"><span><%= passed[:counter] %></span></div>
+      <div class="circle number"><span><%= books.find_index(passed)+1 %></span></div>
       <a href="<%= passed[:link]%>" target="_blank"><%=image_tag('http://images.amazon.com/images/P/' + passed[:isbn] + '.01.LZZZZZZZ.jpg', class: "book_cover", alt: book.title)%></a>
       <%= link_to("View on Amazon ", passed[:link], target: "_blank", class: "btn outbound", title: "View and Get on Amazon" ) %>
       <span class="disclaimer">using this link helps keep this site online</span>
@@ -19,28 +19,11 @@
       </div>
       <div class="description">
         <p><%=strip_tags(book.description)%></p>
-        <p><%#=book.description.gsub(/<br \/><br \/><br \/><br \/>|<br\ \/><br\ \/><br\ \/>|<br \/><br \/>|<br \/> <br \/>|<br \/>|<br><br>|<br>/, '</p><p>') %></p>
-        <!-- <p><%#=truncate_words(strip_tags(book.description), length: 800, separator: "<br>")%></p> -->
       </div>
       <p><a href="<%=passed[:link]%>" target="_blank" class="readnow"> Read It Now! </a></p>
-      <!-- <p><a class="readmore"> Read More</a></p> -->
-
-      <!-- <div class="">
-        <p>Published by <%=book.publisher%> in <%book.publication_year.to_s%></p>
-        <p><%=book.num_pages%> Pages, <%=book.format%></p>
-        <p>ISBN: <%=book.isbn%></p>
-        <p>GoodReads Link : <%= link_to("View on GoodReads ", book.link, target: "_blank" ) %></p>
-      </div>
-      multiplied <%=book.ratings_count.to_i * book.average_rating.to_i%>
-      average book rating: <%=book.average_rating.to_i%>
-      ratings_count: <%=book.ratings_count%>
-      reviews count: <%=book.work.reviews_count%>
-      Custom Note: <%= passed[:note] %> -->
-
     </div>
   </section>
 
 
-
-
+  
 <% end %>
