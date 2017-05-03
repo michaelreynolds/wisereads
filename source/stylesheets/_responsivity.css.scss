@@ -50,7 +50,7 @@ $tablet-device-height: 1024px;		// iPad Landscape
 		@media only screen and (max-width: $tablet-device-height) { @content; } //1024px
 	}
 	@else if $media == desktop {
-		@media only screen and (min-width: breakpoint($tablet-device-height)) { @content; } //1025px
+		@media only screen and (min-width: breakpoint($tablet-device-width)) { @content; } //1025px
 	}
 	@else if $media == retina {
 		@media only screen and (-webkit-min-device-pixel-ratio: 2) { @content; } //hi-resolution displays

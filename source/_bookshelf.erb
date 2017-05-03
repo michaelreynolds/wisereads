@@ -18,12 +18,19 @@
         <h5><span class="rating"><%=book.average_rating%><!-- out of 5.0 --> Hoots </span><a href="<%=book.link%>" target="_blank" title="View book in GoodReads" class="drop-target"><%=image_tag("images/info.svg", class: "info")%></a></h5>
       </div>
       <div class="description">
-        <p><%=strip_tags(book.description)%></p>
+        <form>
+          <input type="checkbox" class="read-more-state" id="book-<%= books.find_index(passed)+1 %>" />
+          <p class="description read-more-wrap"><span class="read-more-target"><%=strip_tags(book.description)%></span></p>
+          <label for="book-<%= books.find_index(passed)+1 %>" class="btn read-more-trigger"></label>
+        </form>
+        <!-- <p><a href="" class="read-more"> Read More</a></p> -->
+        <p><a href="<%=passed[:link]%>" target="_blank" class="readnow">Get it on Amazon!</a></p>
       </div>
-      <p><a href="<%=passed[:link]%>" target="_blank" class="readnow"> Read It Now! </a></p>
+
     </div>
+
   </section>
 
 
-  
+
 <% end %>

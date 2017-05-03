@@ -1,5 +1,6 @@
 @charset "utf-8"
 @import normalize.css.scss
+// @import reset.css.sass
 @import responsivity.css.scss
 // @import _media-queries-debug.css.sass
 
@@ -8,11 +9,14 @@
 //////////////////////////////////////////
 //////////////////////////////////////////
 $grey: #2c2c3c
-$lightgrey: #b9b9be
+$midgrey: #8a8aa8
+$lightgrey: #d3d3de
 $offwhite: #f7f5f0
 $maroon: #660e31
 $orange: #ffa724
 $orange-darker: #ff980e
+$border-radius: 0.125rem
+$button-padding: 1rem 1.25rem
 //////////////////////////////////////////
 //////////////////////////////////////////
 //////////////////////////////////////////
@@ -74,6 +78,13 @@ img
   max-width: 100%
   height: auto
   display: block
+.btn
+  border-radius: $border-radius
+  display: inline-block
+  padding: $button-padding
+  text-decoration: none
+  font-weight: 700
+  cursor: pointer
 //////////////////////////////////////////
 //////////////////////////////////////////
 //////////////////////////////////////////
@@ -112,7 +123,7 @@ header
 //////////////////////////////////////////
 //////////////////////////////////////////
 
-section
+.book
   max-width: 60rem
   margin: 0 auto
   display: flex
@@ -120,6 +131,8 @@ section
   margin-bottom: 3rem
   border-bottom: 1px solid $lightgrey
   +respond(all-mobile)
+    max-width: 40rem
+  +respond(all-phones)
     float: none
     clear: both
     display: block
@@ -134,7 +147,7 @@ section
     margin-right: 2rem
     max-width: 11rem
     float: left
-    +respond(all-mobile)
+    +respond(all-phones)
       float: none
       clear: both
       margin: 0 auto
@@ -158,15 +171,11 @@ section
       display: inline-block
   .book_cover
     max-width: 10.75rem
-    border-radius: 0.125rem
+    border-radius: $border-radius
     margin-bottom: 1.25rem
-  .btn.outbound
+  .outbound
+    @extend .btn
     background-color: $orange
-    border-radius: 0.125rem
-    display: inline-block
-    padding: 1rem 1.25rem
-    text-decoration: none
-    font-weight: 700
     &:focus, &:hover
       background-color: $orange-darker
       color: $grey
@@ -178,7 +187,7 @@ section
 
   .main
     padding-right: 2rem
-    +respond(all-mobile)
+    +respond(all-phones)
       margin: 0 auto
       padding: 2rem
   .inline
@@ -211,19 +220,73 @@ section
   .description
     font-weight: 400
     font-size: 0.8125rem
-    line-height: normal
-    padding-top: 0.25rem
+    p
+      line-height: normal
   .readmore, .readnow
     text-decoration: none
-    font-weight: 600
     font-size: 0.8125rem
+    font-weight: 600
+    padding: 5px 0
+
   .readmore::after
     content: url("/images/caret.svg")
     width: 0.6875rem
     height: 0.375rem
     display: inline-block
     padding-left: 0.1875rem
+    // position: absolute
+    // top: -3px
 
+//////////////////////////////////////////
+
+.read-more-state
+  display: none
++respond(desktop)
+  .read-more-trigger
+    display: none
++respond(all-phones)
+  .read-more-target
+    opacity: 0
+    max-height: 0
+    font-size: 0
+    transition: .25s ease
+  .read-more-state
+    &:checked ~ .read-more-wrap .read-more-target
+      opacity: 1
+      font-size: inherit
+      // max-height: 999em
+      padding-top: 0.25rem
+    &:checked ~ .read-more-wrap
+      padding: 0.25rem 0
+    & ~ .read-more-wrap
+      margin: 0
+    &:checked ~ .read-more-trigger
+      margin-top: 0.5rem
+    & ~ .read-more-trigger
+      color: $grey
+      font-weight: 400
+      border: 1px solid $grey
+      padding: 0.5rem 0.8rem
+      // display: block
+    &:checked ~ .read-more-trigger:before
+      content: 'Hide description'
+    & ~ .read-more-trigger:before
+      content: 'Show description'
+
+
+// button
+//   -webkit-user-select: none
+//   background: rgb(66, 133, 244)
+//   border: 0
+//   border-radius: $border-radius
+//   box-sizing: border-box
+//   color: #fff
+//   cursor: pointer
+//   float: right
+//   font-size: .875em
+//   margin: 0
+//   padding: 10px 24px
+//   transition: box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1)
 
 //////////////////////////////////////////
 //////////////////////////////////////////

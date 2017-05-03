@@ -27,7 +27,7 @@
 
 
 <div class="">
-  <!-- <p><a class="readmore"> Read More</a></p> -->
+  
   <p><%#=book.description.gsub(/<br \/><br \/><br \/><br \/>|<br\ \/><br\ \/><br\ \/>|<br \/><br \/>|<br \/> <br \/>|<br \/>|<br><br>|<br>/, '</p><p>') %></p>
   <!-- <p><%#=truncate_words(strip_tags(book.description), length: 800, separator: "<br>")%></p> -->
   <p>Published by <%#=book.publisher%> in <%#book.publication_year.to_s%></p>
