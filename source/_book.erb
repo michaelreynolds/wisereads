@@ -2,6 +2,10 @@
   require 'goodreads'
   @client = Goodreads::Client.new(api_key: "p5qrzhENwZGbhMZ5izXULA")
 %>
+
+
+<!-- raw data page for development -->
+
 <%=isbn.inspect%>
 
 
@@ -27,7 +31,7 @@
 
 
 <div class="">
-  
+
   <p><%#=book.description.gsub(/<br \/><br \/><br \/><br \/>|<br\ \/><br\ \/><br\ \/>|<br \/><br \/>|<br \/> <br \/>|<br \/>|<br><br>|<br>/, '</p><p>') %></p>
   <!-- <p><%#=truncate_words(strip_tags(book.description), length: 800, separator: "<br>")%></p> -->
   <p>Published by <%#=book.publisher%> in <%#book.publication_year.to_s%></p>
