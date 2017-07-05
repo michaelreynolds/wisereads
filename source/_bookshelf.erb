@@ -9,13 +9,12 @@
       <div class="circle number"><span><%= books.find_index(passed)+1 %></span></div>
       <a href="<%= passed[:link]%>" target="_blank"><%=image_tag('http://images.amazon.com/images/P/' + passed[:isbn] + '.01.LZZZZZZZ.jpg', class: "book_cover", alt: book.title)%></a>
       <%= link_to("View on Amazon ", passed[:link], target: "_blank", class: "btn outbound", title: "View and Get on Amazon" ) %>
-      <!-- <span class="disclaimer">using this link helps keep this site online</span> -->
       <span class="disclaimer">using this link helps us stay online</span>
     </div>
     <div class="main">
       <h3><a href="<%=passed[:link]%>" target="_blank" class="booktitle"><%=book.title%></a></h3>
       <div class="inline">
-        <% (books.find_index(passed).to_i..(books.find_index(passed).to_i+5)).each do |x| %>
+        <% if  (books.find_index(passed).to_i < 6) %>
           <%= '<span class="toppick">Top Pick!</span>' %>
         <% end %>
         <h3 class="bookauthor">by <%= passed[:author] %></h3>
@@ -24,12 +23,11 @@
       <div class="description">
         <form>
           <input type="checkbox" class="read-more-state" id="book-<%= books.find_index(passed)+1 %>" />
-          <p class="description read-more-wrap"><span class="read-more-target"><%=strip_tags(book.description)%></span></p>
+          <p class="description read-more-wrap"><span class="read-more-target"><%=strip_tags(book.description)%><%=passed[:review]%></span></p>
           <label for="book-<%= books.find_index(passed)+1 %>" class="btn read-more-trigger"></label>
         </form>
         <p><a href="<%=passed[:link]%>" target="_blank" class="readnow">Get it on Amazon!</a></p>
       </div>
     </div>
   </section>
-<%#= (1..5).each do |i| %>
 <% end %>
