@@ -9,12 +9,12 @@
       <div class="circle number"><span><%= books.find_index(passed)+1 %></span></div>
       <a href="<%= passed[:link]%>" target="_blank"><%=image_tag('http://images.amazon.com/images/P/' + passed[:isbn] + '.01.LZZZZZZZ.jpg', class: "book_cover", alt: book.title)%></a>
       <%= link_to("View on Amazon ", passed[:link], target: "_blank", class: "btn outbound", title: "View and Get on Amazon" ) %>
-      <span class="disclaimer">using this link helps us stay online</span>
+      <!-- <span class="disclaimer">using this link helps us stay online</span> -->
     </div>
     <div class="main">
       <h3><a href="<%=passed[:link]%>" target="_blank" class="booktitle"><%=book.title%></a></h3>
       <div class="inline">
-        <% if  (books.find_index(passed).to_i < 6) %>
+        <% if  (books.find_index(passed).to_i < 8) %>
           <%= '<span class="toppick">Top Pick!</span>' %>
         <% end %>
         <h3 class="bookauthor">by <%= passed[:author] %></h3>
